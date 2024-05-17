@@ -1,0 +1,22 @@
+#macro(mainLayout)
+<html>
+<head>
+    <title>$msg.get("COMMON_TITLE")</title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="icon" href="/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
+</head>
+<body>
+<main>
+    <div id="content">
+        $bodyContent
+    </div>
+</main>
+<footer>
+    $msg.get("COMMON_FOOTER_TEXT")
+</footer>
+</body>
+</html>
+#end

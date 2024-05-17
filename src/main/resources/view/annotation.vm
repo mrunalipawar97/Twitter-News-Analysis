@@ -1,0 +1,49 @@
+#parse("/view/layout.vm")
+#@mainLayout()
+<h1>$msg.get("ANNOTATION_HEADING")</h1>
+<h2>$msg.get("ANNOTATION_QUERY"): $query</h2>
+    <form action="" method="post">
+        <ul class="tweet-list">
+            #foreach($tweet in $tweets )
+                <li>
+                    <blockquote class="twitter-tweet">
+                        <b> @$tweet.getUser().getScreenName() </b>  - $tweet.getText() <br/>
+                        <i class="fa fa-retweet" aria-hidden="true"></i> $tweet.getRetweetCount() <br/>
+                        <span class="creationDate">$tweet.getCreatedAt()</span>
+                    </blockquote>
+                    <div class="switches">
+                        <div class="switch-block">
+                            <label class="label-tag">Assertion</label>
+                            <label class="switch">
+                                <input type="checkbox" name="assertion_$foreach.count">
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                        <div class="switch-block">
+                            <label class="label-tag"> Related to 11s attacks </label>
+                            <label class="switch">
+                                <input type="checkbox" name="topic_$foreach.count">
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                        <div class="switch-block">
+                            <label class="label-tag">Rumor</label>
+                            <label class="switch">
+                                <input type="checkbox" name="rumor_$foreach.count" >
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id_$foreach.count" value=$tweet.getId()></input>
+                </li>
+            #end
+        </ul>
+        <button type="submit">Next</button>
+    </form>
+    <div id="datasetInfo">
+        Number of tweets classified: $nClassified <br/>
+        Number of tweets classified as rumors: $nRumors <br/>
+    </div>
+<script src="/annotation.js"></script>
+#end
+
